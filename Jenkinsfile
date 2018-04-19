@@ -3,16 +3,16 @@ pipeline {
     stages {
         stage('Update submodules') {
             steps {
-                sh 'git submodule update'
+                sh 'git submodule update --init'
             }
         }
 
         stage('Build websites') {
             steps {
-                sh 'curl -L https://github.com/jgm/pandoc/releases/download/2.1.3/pandoc-2.1.3-linux.tar.gz -o pandoc.tar.gz'
-                sh 'echo "abc6482c7ce216d2360e10efd201138f3b37d6da pandoc.tar.gz" | sha1sum -c'
-                sh 'tar xf pandoc.tar.gz'
-                sh 'PATH=pandoc-2.1.3/bin:"$PATH" ./build-websites.sh'
+                sh 'curl -L https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb -o pandoc.deb'
+                sh 'echo "84fe35ed9be0f1d8eb6d4cc03d63a8e532e9776f pandoc.deb" | sha1sum -c'
+                sh 'dpkg -x pandoc.deb pandoc'
+                sh 'PATH="$(pwd)/pandoc/usr/bin":"$PATH" ./build-websites.sh'
             }
         }
 

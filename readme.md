@@ -2,7 +2,7 @@
 
 This repository extensively uses git submodules to pull in documentation files from their respective projects.
 
-You can clone this repository with `git clone --recursive`, or use `git submodule init && git submodule update` after cloning the repository
+You can clone this repository with `git clone --recursive`, or use `git submodule update --init` after cloning the repository
 to initialize all submodules.
 
 ## Structure
