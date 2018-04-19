@@ -10,6 +10,7 @@ build_manual() {
     local versionName="$2"
     shift 2;
 
+    mkdir -p "build/normalized/$productName"
     tar c -C "docs/$productName/$versionName" . | \
     docker run --rm -i hub.xenit.eu/xenit-markdowntopdf:$MARKDOWNTOPDF_VERSION --tar \
     --template default -t markdown-simple_tables --extract-media assets \
@@ -27,14 +28,15 @@ build_docx_manual() {
     local currentPath="$(pwd)"
     pushd "$buildDir" > /dev/null
     pandoc -t markdown-simple_tables --extract-media "assets" "$currentPath/docs/$productName/$versionName/$3" -o "extracted.md" 1>&2
-    popd  > /dev/null
+    popd > /dev/null
     cat - "$buildDir/extracted.md"  > "$buildDir/normalized.md" <<EOL
 ---
 product-version: "$versionName"
 title: "$title"
 ---
 EOL
-    tar c -C "$buildDir" . > "build/normalized/$productName/$versionName.tar"
+    mkdir -p "build/normalized/$productName"
+    tar cf "build/normalized/$productName/$versionName.tar" -C "$buildDir" .
 }
 
 split_manual() {
