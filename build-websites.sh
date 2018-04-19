@@ -15,7 +15,7 @@ build_manual() {
     --template default -t markdown-simple_tables --extract-media assets \
     --resource-path . \
     "$@" \
-    -o normalized.md
+    -o normalized.md > "build/normalized/$productName/$versionName.tar"
 }
 
 build_docx_manual() {
@@ -34,19 +34,20 @@ product-version: "$versionName"
 title: "$title"
 ---
 EOL
-    tar c -C "$buildDir" .
+    tar c -C "$buildDir" . > "build/normalized/$productName/$versionName.tar"
 }
 
 split_manual() {
     local productName="$1"
     local versionName="$2"
     mkdir -p "build/product/$productName"
-    docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" | \
+    < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" | \
     tar x -C "build/product/$productName"
 }
 
 build_and_split_manual() {
-    build_manual "$@" | split_manual "$1" "$2"
+    build_manual "$@"
+    split_manual "$1" "$2"
 }
 
 build_product_website() {
@@ -61,7 +62,8 @@ build_product_website() {
 rm -rf build/
 
 # Desktop
-build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx" "Alfred Desktop Manual" | split_manual desktop 3.6
+build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx" "Alfred Desktop Manual"
+split_manual desktop 3.6
 build_product_website desktop
 
 # Edge
