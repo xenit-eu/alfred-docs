@@ -81,4 +81,7 @@ build_product_website finder
 build_and_split_manual inflow 3.0 "metadata.md" "user-guide.md"
 build_product_website inflow
 
+find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
+\<\!-- alfred-docs@$(git describe --always --dirty) --\>"
+
 tar czf build/website.tar.gz -C build/website .
