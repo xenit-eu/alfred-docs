@@ -3,7 +3,7 @@ set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
 MARKDOWNTOPDF_VERSION=build-201804121240-56
-MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201804191537-6
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201804191606-7
 
 build_manual() {
     local productName="$1"
