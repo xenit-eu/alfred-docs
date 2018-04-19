@@ -1,0 +1,6 @@
+title: Alfred Inflow
+params:
+    metadata:
+        hugo-config:
+            product: inflow
+            logo-link: https://xenit.eu/alfred-inflow-content-migration-alfresco/

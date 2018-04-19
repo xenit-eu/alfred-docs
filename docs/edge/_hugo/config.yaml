@@ -1,0 +1,5 @@
+title: Alfred Edge
+params:
+    metadata:
+        hugo-config:
+            product: edge

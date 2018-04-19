@@ -1,0 +1,6 @@
+title: Alfred Desktop
+params:
+    metadata:
+        hugo-config:
+            product: desktop
+            logo-link: https://xenit.eu/alfred-desktop-for-alfresco/

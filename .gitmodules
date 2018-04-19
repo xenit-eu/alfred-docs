@@ -1,0 +1,12 @@
+[submodule "repo/inflow/3.0"]
+	path = repo/inflow/3.0
+	url = git@bitbucket.org:xenit/move2alf-war.git
+	branch = release-3.0
+[submodule "repo/finder/2.0"]
+	path = repo/finder/2.0
+	url = git@bitbucket.org:xenit/finder-xenit.git
+	branch = master
+[submodule "repo/edge/1.0"]
+	path = repo/edge/1.0
+	url = git@bitbucket.org:xenit/edge-docs.git
+	branch = release-1.0
