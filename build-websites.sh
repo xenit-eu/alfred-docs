@@ -68,18 +68,10 @@ build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx" "Alfred Deskt
 split_manual desktop 3.6
 build_product_website desktop
 
-# Edge
-build_and_split_manual edge 1.0 metadata.md main.md
-build_product_website edge
-
 # Finder
 build_and_split_manual finder 2.0-configuration "configuration-guide.md"
 build_and_split_manual finder 2.0-user "user-guide.md"
 build_product_website finder
-
-# Inflow
-build_and_split_manual inflow 3.0 "metadata.md" "user-guide.md"
-build_product_website inflow
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
