@@ -3,7 +3,7 @@ set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
 MARKDOWNTOPDF_VERSION=build-201804121240-56
-MARKDOWNTOWEBSITE_VERSION=build-201804191059-4
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201804191537-6
 
 build_manual() {
     local productName="$1"
@@ -23,7 +23,7 @@ build_docx_manual() {
     local productName="$1"
     local versionName="$2"
     local title="$4"
-    local buildDir="build/product/$productName/$versionName"
+    local buildDir="build/docx/$productName/$versionName"
     mkdir -p "$buildDir"
     local currentPath="$(pwd)"
     pushd "$buildDir" > /dev/null
@@ -35,6 +35,7 @@ product-version: "$versionName"
 title: "$title"
 ---
 EOL
+    rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
     tar cf "build/normalized/$productName/$versionName.tar" -C "$buildDir" .
 }
