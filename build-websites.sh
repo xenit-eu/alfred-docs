@@ -13,7 +13,7 @@ build_manual() {
     shift 2;
 
     mkdir -p "build/normalized/$productName"
-    tar c -C "docs/$productName/$versionName" . | \
+    tar c --portability -C "docs/$productName/$versionName" . | \
     docker run --rm -i hub.xenit.eu/xenit-markdowntopdf:$MARKDOWNTOPDF_VERSION --tar \
     --template default -t markdown-simple_tables --extract-media assets \
     --resource-path . \
@@ -33,7 +33,7 @@ build_docx_manual() {
     cat "docs/$productName/$versionName/metadata.yaml" "$buildDir/extracted.md"  > "$buildDir/normalized.md"
     rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
-    tar cf "build/normalized/$productName/$versionName.tar" -C "$buildDir" .
+    tar cf "build/normalized/$productName/$versionName.tar" --portability -C "$buildDir" .
 }
 
 split_manual() {
@@ -54,7 +54,7 @@ build_product_website() {
     local productName="$1"
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
-    tar c -C "build/product/$productName" . | \
+    tar c --portability -C "build/product/$productName" . | \
         docker run --rm -i hub.xenit.eu/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
         tar x -C "build/website/$productName"
 }
