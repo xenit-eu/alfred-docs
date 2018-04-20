@@ -62,22 +62,22 @@ build_product_website() {
 rm -rf build/
 
 # Desktop
-build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
-split_manual desktop 3.6
-build_docx_manual desktop 3.5 "Fred User Guide 3.5.docx"
-split_manual desktop 3.5
-build_docx_manual desktop 3.4 "Fred User Guide 3.4.docx"
-split_manual desktop 3.4
-build_docx_manual desktop 3.3 "Fred User Guide 3.3.docx"
-split_manual desktop 3.3
-build_docx_manual desktop 3.2 "Fred User Guide Trial 3.2.docx"
-split_manual desktop 3.2
-build_product_website desktop
+build_docx_manual alfred-desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
+split_manual alfred-desktop 3.6
+build_docx_manual alfred-desktop 3.5 "Fred User Guide 3.5.docx"
+split_manual alfred-desktop 3.5
+build_docx_manual alfred-desktop 3.4 "Fred User Guide 3.4.docx"
+split_manual alfred-desktop 3.4
+build_docx_manual alfred-desktop 3.3 "Fred User Guide 3.3.docx"
+split_manual alfred-desktop 3.3
+build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx"
+split_manual alfred-desktop 3.2
+build_product_website alfred-desktop
 
 # Finder
-build_and_split_manual finder 2.0-user "user-guide.md"
-build_and_split_manual finder 2.0-configuration "configuration-guide.md"
-build_product_website finder
+build_and_split_manual alfred-finder 2.0-user "user-guide.md"
+build_and_split_manual alfred-finder 2.0-configuration "configuration-guide.md"
+build_product_website alfred-finder
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
