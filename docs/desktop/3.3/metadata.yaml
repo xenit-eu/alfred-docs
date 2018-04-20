@@ -1,0 +1,6 @@
+---
+product-version: "3.3"
+title: Fred Manual
+hugo-config:
+  product: fred
+---

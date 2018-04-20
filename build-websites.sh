@@ -24,19 +24,13 @@ build_manual() {
 build_docx_manual() {
     local productName="$1"
     local versionName="$2"
-    local title="$4"
     local buildDir="build/docx/$productName/$versionName"
     mkdir -p "$buildDir"
     local currentPath="$(pwd)"
     pushd "$buildDir" > /dev/null
     pandoc -t markdown-simple_tables --extract-media "assets" "$currentPath/docs/$productName/$versionName/$3" -o "extracted.md" 1>&2
     popd > /dev/null
-    cat - "$buildDir/extracted.md"  > "$buildDir/normalized.md" <<EOL
----
-product-version: "$versionName"
-title: "$title"
----
-EOL
+    cat "docs/$productName/$versionName/metadata.yaml" "$buildDir/extracted.md"  > "$buildDir/normalized.md"
     rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
     tar cf "build/normalized/$productName/$versionName.tar" -C "$buildDir" .
@@ -68,15 +62,15 @@ build_product_website() {
 rm -rf build/
 
 # Desktop
-build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx" "Alfred Desktop Manual"
+build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
 split_manual desktop 3.6
-build_docx_manual desktop 3.5 "Fred User Guide 3.5.docx" "Fred Manual"
+build_docx_manual desktop 3.5 "Fred User Guide 3.5.docx"
 split_manual desktop 3.5
-build_docx_manual desktop 3.4 "Fred User Guide 3.4.docx" "Fred Manual"
+build_docx_manual desktop 3.4 "Fred User Guide 3.4.docx"
 split_manual desktop 3.4
-build_docx_manual desktop 3.3 "Fred User Guide 3.3.docx" "Fred Manual"
+build_docx_manual desktop 3.3 "Fred User Guide 3.3.docx"
 split_manual desktop 3.3
-build_docx_manual desktop 3.2 "Fred User Guide Trial 3.2.docx" "Fred Manual"
+build_docx_manual desktop 3.2 "Fred User Guide Trial 3.2.docx"
 split_manual desktop 3.2
 build_product_website desktop
 
