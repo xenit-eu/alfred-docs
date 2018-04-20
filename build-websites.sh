@@ -3,7 +3,9 @@ set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
 MARKDOWNTOPDF_VERSION=build-201804121240-56
-MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201804191606-7
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201804201146-8
+
+WEIGHT=0
 
 build_manual() {
     local productName="$1"
@@ -43,8 +45,9 @@ EOL
 split_manual() {
     local productName="$1"
     local versionName="$2"
+    WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
-    < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" | \
+    < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" | \
     tar x -C "build/product/$productName"
 }
 
@@ -67,11 +70,19 @@ rm -rf build/
 # Desktop
 build_docx_manual desktop 3.6 "Alfred Desktop User Guide 3.6.docx" "Alfred Desktop Manual"
 split_manual desktop 3.6
+build_docx_manual desktop 3.5 "Fred User Guide 3.5.docx" "Fred Manual"
+split_manual desktop 3.5
+build_docx_manual desktop 3.4 "Fred User Guide 3.4.docx" "Fred Manual"
+split_manual desktop 3.4
+build_docx_manual desktop 3.3 "Fred User Guide 3.3.docx" "Fred Manual"
+split_manual desktop 3.3
+build_docx_manual desktop 3.2 "Fred User Guide Trial 3.2.docx" "Fred Manual"
+split_manual desktop 3.2
 build_product_website desktop
 
 # Finder
-build_and_split_manual finder 2.0-configuration "configuration-guide.md"
 build_and_split_manual finder 2.0-user "user-guide.md"
+build_and_split_manual finder 2.0-configuration "configuration-guide.md"
 build_product_website finder
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
