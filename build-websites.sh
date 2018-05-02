@@ -18,7 +18,7 @@ build_manual() {
     --template default -t markdown-simple_tables --extract-media assets \
     --resource-path . \
     "$@" \
-    -o normalized.md > "build/normalized/$productName/$versionName.tar"
+    -o normalized.md
 }
 
 build_docx_manual() {
@@ -33,7 +33,7 @@ build_docx_manual() {
     cat "docs/$productName/$versionName/metadata.yaml" "$buildDir/extracted.md"  > "$buildDir/normalized.md"
     rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
-    tar cf "build/normalized/$productName/$versionName.tar" --portability -C "$buildDir" .
+    tar c --portability -C "$buildDir" .
 }
 
 split_manual() {
@@ -41,12 +41,12 @@ split_manual() {
     local versionName="$2"
     WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
-    < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" | \
+    docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" | \
     tar x -C "build/product/$productName"
 }
 
 build_and_split_manual() {
-    build_manual "$@"
+    build_manual "$@" | \
     split_manual "$1" "$2"
 }
 
@@ -62,15 +62,15 @@ build_product_website() {
 rm -rf build/
 
 # Desktop
-build_docx_manual alfred-desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
+build_docx_manual alfred-desktop 3.6 "Alfred Desktop User Guide 3.6.docx" | \
 split_manual alfred-desktop 3.6
-build_docx_manual alfred-desktop 3.5 "Fred User Guide 3.5.docx"
+build_docx_manual alfred-desktop 3.5 "Fred User Guide 3.5.docx" |\
 split_manual alfred-desktop 3.5
-build_docx_manual alfred-desktop 3.4 "Fred User Guide 3.4.docx"
+build_docx_manual alfred-desktop 3.4 "Fred User Guide 3.4.docx" |\
 split_manual alfred-desktop 3.4
-build_docx_manual alfred-desktop 3.3 "Fred User Guide 3.3.docx"
+build_docx_manual alfred-desktop 3.3 "Fred User Guide 3.3.docx" |\
 split_manual alfred-desktop 3.3
-build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx"
+build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx" |\
 split_manual alfred-desktop 3.2
 build_product_website alfred-desktop
 
