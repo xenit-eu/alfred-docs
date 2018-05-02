@@ -44,8 +44,8 @@ split_manual() {
     WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
     sleep 5
-    < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" | \
-    tar x -C "build/product/$productName"
+    cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    tar xf "build/normalized/$productName/$versionName-out.tar" -C "build/product/$productName"
     sync
 }
 
