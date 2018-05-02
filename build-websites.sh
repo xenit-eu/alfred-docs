@@ -19,6 +19,7 @@ build_manual() {
     --resource-path . \
     "$@" \
     -o normalized.md > "build/normalized/$productName/$versionName.tar"
+    sync
 }
 
 build_docx_manual() {
@@ -34,6 +35,7 @@ build_docx_manual() {
     rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
     tar cf "build/normalized/$productName/$versionName.tar" --portability -C "$buildDir" .
+    sync
 }
 
 split_manual() {
@@ -43,6 +45,7 @@ split_manual() {
     mkdir -p "build/product/$productName"
     < "build/normalized/$productName/$versionName.tar" docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" | \
     tar x -C "build/product/$productName"
+    sync
 }
 
 build_and_split_manual() {
@@ -57,6 +60,7 @@ build_product_website() {
     tar c --portability -C "build/product/$productName" . | \
         docker run --rm -i hub.xenit.eu/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
         tar x -C "build/website/$productName"
+    sync
 }
 
 rm -rf build/
