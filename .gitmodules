@@ -5,7 +5,7 @@
 [submodule "repo/finder/2.0"]
 	path = repo/finder/2.0
 	url = git@bitbucket.org:xenit/finder-xenit.git
-	branch = master
+	branch = 2.0.2
 [submodule "repo/edge/1.0"]
 	path = repo/edge/1.0
 	url = git@bitbucket.org:xenit/edge-docs.git
