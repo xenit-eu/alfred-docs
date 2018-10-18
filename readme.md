@@ -24,3 +24,11 @@ The `docs/$productName/_hugo` folder contains a configuration file that is used 
 1. `git submodule add -b <release-branch> git@bitbucket.org:xenit/<repository>.git repo/<productName>/<versionNumber>`
 2. `ln -s ../../repo/<productName>/<versionNumber>/<path-to-docs-directory> docs/<productName>/<versionNumber>`
 3. Edit `build-websites.sh` to add a `build_and_split_manual` step for the new version: `build_and_split_manual <productName> <versionNumber> <filesForPandoc>`
+
+## Updating a manual of an product version
+
+1. Go to the submodule you want to update `cd repo/<productName>/<versionNumber>`
+2. Checkout the commit you want to update to `git fetch && git checkout <commit/tag/branch>`
+3. Go back to the main repository `cd ../../..`
+4. Add the changes to the submodule `git add repo/<productName>/<versionNumber>`
+5. Commit with a message like `Update manuals for <productName> <versionNumber>`
