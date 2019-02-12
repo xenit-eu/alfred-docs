@@ -67,6 +67,8 @@ build_product_website() {
 rm -rf build/
 
 # Desktop
+build_docx_manual alfred-desktop 3.7 "Alfred Desktop User Guide 3.7.docx"
+split_manual alfred-desktop 3.7
 build_docx_manual alfred-desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
 split_manual alfred-desktop 3.6
 build_docx_manual alfred-desktop 3.5 "Fred User Guide 3.5.docx"
