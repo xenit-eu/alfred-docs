@@ -15,3 +15,7 @@
 	path = repo/edge/1.1
 	url = git@bitbucket.org:xenit/edge-docs.git
 	branch = release-1.1
+[submodule "repo/inflow/3.1"]
+	path = repo/inflow/3.1
+	url = git@bitbucket.org:xenit/inflow-docs.git
+	branch = release
