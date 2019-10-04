@@ -2,8 +2,8 @@
 set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
-MARKDOWNTOPDF_VERSION=build-201808071222-61
-MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201808061502-15
+MARKDOWNTOPDF_VERSION=build-201909301031-63
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201910041002-3
 
 WEIGHT=0
 
@@ -14,7 +14,7 @@ build_manual() {
 
     mkdir -p "build/normalized/$productName"
     tar c --portability -C "docs/$productName/$versionName" . | \
-    docker run --rm -i hub.xenit.eu/xenit-markdowntopdf:$MARKDOWNTOPDF_VERSION --tar \
+    docker run --rm -i hub.xenit.eu/private/xenit-markdowntopdf:$MARKDOWNTOPDF_VERSION --tar \
     --template default -t markdown-simple_tables --extract-media assets \
     --resource-path . \
     "$@" \
@@ -44,7 +44,7 @@ split_manual() {
     WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
     tar tf "build/normalized/$productName/$versionName.tar"
-    cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
     sync
     tar xf "build/normalized/$productName/$versionName-out.tar" -C "build/product/$productName"
 }
@@ -59,7 +59,7 @@ build_product_website() {
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
     tar c --portability -C "build/product/$productName" . | \
-        docker run --rm -i hub.xenit.eu/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
+        docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
         tar x -C "build/website/$productName"
     sync
 }
@@ -82,8 +82,8 @@ split_manual alfred-desktop 3.2
 build_product_website alfred-desktop
 
 # Finder
-build_and_split_manual alfred-finder 2.0-user "user-guide.md"
-build_and_split_manual alfred-finder 2.0-configuration "configuration-guide.md"
+build_and_split_manual alfred-finder 2.1-user "user-guide.md"
+build_and_split_manual alfred-finder 2.1-configuration "configuration-guide.md"
 build_product_website alfred-finder
 
 # Edge
