@@ -32,3 +32,7 @@ The `docs/$productName/_hugo` folder contains a configuration file that is used 
 3. Go back to the main repository `cd ../../..`
 4. Add the changes to the submodule `git add repo/<productName>/<versionNumber>`
 5. Commit with a message like `Update manuals for <productName> <versionNumber>`
+
+## Deploying documentation websites
+
+Follow deployment instructions in the Wiki page [A2Hosting for www.xenit.eu](https://xenitsupport.jira.com/wiki/spaces/ST/pages/652378153/A2Hosting+for+www.xenit.eu) section docs.xenit.eu
