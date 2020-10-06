@@ -103,7 +103,11 @@ build_and_split_manual alfred-inflow 3.1-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 3.1-installation "installation-guide.md"
 build_product_website alfred-inflow
 
-
+# Api
+build_and_split_manual alfred-api stable "user-guide.md"
+build_and_split_manual alfred-api stable "developer-guide.md"
+build_and_split_manual alfred-api stable "installation-guide.md"
+build_product_website alfred-api
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
