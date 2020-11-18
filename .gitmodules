@@ -23,4 +23,4 @@
 [submodule "repo/api/stable"]
 	path = repo/api/stable
 	url = https://github.com/xenit-eu/alfred-api-docs.git
-	branch = ALFREDAPI-454
+	branch = master
