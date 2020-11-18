@@ -2,8 +2,8 @@
 set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
-MARKDOWNTOPDF_VERSION=build-201909301031-63
-MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-201910041002-3
+MARKDOWNTOPDF_VERSION=build-201911121900-1
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-202010231216-2
 
 WEIGHT=0
 
@@ -105,7 +105,9 @@ build_and_split_manual alfred-inflow 3.1-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 3.1-installation "installation-guide.md"
 build_product_website alfred-inflow
 
-
+# Api
+build_and_split_manual alfred-api stable-user "user-guide.md"
+build_product_website alfred-api
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"

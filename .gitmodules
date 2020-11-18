@@ -20,3 +20,7 @@
 	path = repo/finder/2.1
 	url = git@bitbucket.org:xenit/finder-xenit.git
 	branch = release-2.1
+[submodule "repo/api/stable"]
+	path = repo/api/stable
+	url = https://github.com/xenit-eu/alfred-api-docs.git
+	branch = master
