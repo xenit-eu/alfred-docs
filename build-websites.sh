@@ -69,8 +69,7 @@ build_product_website() {
 # of the jar from there and unzip it to include it in the website.
 load_alfredapi_javadoc() {
     mkdir -p "build/website/alfred-api/stable-user/javadoc"
-    wget -U "Mozilla/5.0 (X11; Linux; rv:74.0) Gecko/20100101 Firefox/74.0" \
-    -O build/website/alfred-api/stable-user/javadoc/apix-interface-javadoc.jar \
+    curl -L -o build/website/alfred-api/stable-user/javadoc/apix-interface-javadoc.jar \
     https://search.maven.org/remotecontent?filepath=eu/xenit/apix/apix-interface/2.7.0/apix-interface-2.7.0-javadoc.jar;
     unzip build/website/alfred-api/stable-user/javadoc/apix-interface-javadoc.jar -d ./build/website/alfred-api/stable-user/javadoc
     rm build/website/alfred-api/stable-user/javadoc/apix-interface-javadoc.jar
