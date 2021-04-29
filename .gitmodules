@@ -18,7 +18,7 @@
 	branch = release
 [submodule "repo/finder/2.1"]
 	path = repo/finder/2.1
-	url = git@bitbucket.org:xenit/finder-xenit.git
+	url = git@bitbucket.org:xenit/finder-docs.git
 	branch = release-2.1
 [submodule "repo/api/stable"]
 	path = repo/api/stable
