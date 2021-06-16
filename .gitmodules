@@ -32,3 +32,7 @@
 	path = repo/inflow/3.4
 	url = git@bitbucket.org:xenit/inflow-docs.git
 	branch = release
+[submodule "repo/finder/2.2"]
+	path = repo/finder/2.2
+	url = git@bitbucket.org:xenit/finder-docs.git
+	branch = release-2.2

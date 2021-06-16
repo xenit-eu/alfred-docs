@@ -100,6 +100,8 @@ build_product_website alfred-desktop
 # Finder
 build_and_split_manual alfred-finder 2.1-user "user-guide.md"
 build_and_split_manual alfred-finder 2.1-configuration "configuration-guide.md"
+build_and_split_manual alfred-finder 2.2-user "user-guide.md"
+build_and_split_manual alfred-finder 2.2-admin "admin-guide.md"
 build_product_website alfred-finder
 
 # Edge
