@@ -98,29 +98,29 @@ split_manual alfred-desktop 3.2
 build_product_website alfred-desktop
 
 # Finder
+build_and_split_manual alfred-finder 2.2-user "user-guide.md"
+build_and_split_manual alfred-finder 2.2-admin "admin-guide.md"
 build_and_split_manual alfred-finder 2.1-user "user-guide.md"
 build_and_split_manual alfred-finder 2.1-configuration "configuration-guide.md"
 build_product_website alfred-finder
 
 # Edge
-build_and_split_manual alfred-edge 1.0 "main.md"
-build_product_website alfred-edge
-
 build_and_split_manual alfred-edge 1.1 "main.md"
+build_and_split_manual alfred-edge 1.0 "main.md"
 build_product_website alfred-edge
 
 
 # Inflow
-build_and_split_manual alfred-inflow 3.0 "user-guide.md"
-build_and_split_manual alfred-inflow 3.1-user "user-guide.md"
-build_and_split_manual alfred-inflow 3.1-developer "developer-guide.md"
-build_and_split_manual alfred-inflow 3.1-installation "installation-guide.md"
-build_and_split_manual alfred-inflow 3.3-user "user-guide.md"
-build_and_split_manual alfred-inflow 3.3-developer "developer-guide.md"
-build_and_split_manual alfred-inflow 3.3-installation "installation-guide.md"
 build_and_split_manual alfred-inflow 3.4-user "user-guide.md"
 build_and_split_manual alfred-inflow 3.4-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 3.4-installation "installation-guide.md"
+build_and_split_manual alfred-inflow 3.3-user "user-guide.md"
+build_and_split_manual alfred-inflow 3.3-developer "developer-guide.md"
+build_and_split_manual alfred-inflow 3.3-installation "installation-guide.md"
+build_and_split_manual alfred-inflow 3.1-user "user-guide.md"
+build_and_split_manual alfred-inflow 3.1-developer "developer-guide.md"
+build_and_split_manual alfred-inflow 3.1-installation "installation-guide.md"
+build_and_split_manual alfred-inflow 3.0 "user-guide.md"
 build_product_website alfred-inflow
 
 # Api
