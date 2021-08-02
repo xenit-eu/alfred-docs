@@ -64,16 +64,16 @@ build_product_website() {
     sync
 }
 
-# the javadoc jar for alfredapi interface is published on maven central.
-# given the assumption that publishing a new version happens before updating the docs, we can retrieve the latest version
-# of the jar from there and unzip it to include it in the website.
-unzip_alfredapi_javadoc() {
-    local javadocdir="build/website/alfred-api/stable-user/javadoc"
-    mkdir -p "$javadocdir"
-    curl -L -o "$javadocdir/apix-interface-javadoc.jar" \
-        https://search.maven.org/remotecontent?filepath=eu/xenit/apix/apix-interface/2.7.0/apix-interface-2.7.0-javadoc.jar
-    unzip "$javadocdir/apix-interface-javadoc.jar" -d "$javadocdir"
-    rm "$javadocdir/apix-interface-javadoc.jar"
+# The Alfred API Javadoc is built by a git submodule of the 'alfred-api' repository
+build_alfredapi_javadoc() {
+    local alfredapidir="repo/alfred-api/stable"
+    pushd "$alfredapidir"
+    ./gradlew clean :apix-interface:javadoc
+    popd
+
+    local outputdir="build/website/alfred-api/stable-user"
+    mkdir -p "$outputdir"
+    cp -a "$alfredapidir/apix-interface/build/docs/javadoc" $outputdir
 }
 
 rm -rf build/
@@ -126,7 +126,7 @@ build_product_website alfred-inflow
 # Api
 build_and_split_manual alfred-api stable-user "user-guide.md"
 build_product_website alfred-api
-unzip_alfredapi_javadoc
+build_alfredapi_javadoc
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
