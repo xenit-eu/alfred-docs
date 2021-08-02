@@ -34,7 +34,7 @@
 	branch = release-2.2
 
 [submodule "repo/api/stable"]
-	path = repo/api/stable
+	path = repo/alfred-api-docs/stable
 	url = https://github.com/xenit-eu/alfred-api-docs.git
 	branch = master
 [submodule "repo/alfred-api/stable"]
