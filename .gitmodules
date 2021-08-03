@@ -5,15 +5,15 @@
 [submodule "repo/inflow/3.1"]
 	path = repo/inflow/3.1
 	url = git@bitbucket.org:xenit/inflow-docs.git
-	branch = release
+	branch = release-3.1
 [submodule "repo/inflow/3.3"]
 	path = repo/inflow/3.3
 	url = git@bitbucket.org:xenit/inflow-docs.git
-	branch = release
+	branch = release-3.3
 [submodule "repo/inflow/3.4"]
 	path = repo/inflow/3.4
 	url = git@bitbucket.org:xenit/inflow-docs.git
-	branch = release
+	branch = release-3.4
 
 [submodule "repo/edge/1.0"]
 	path = repo/edge/1.0
