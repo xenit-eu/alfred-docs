@@ -37,3 +37,7 @@
 	path = repo/alfred-api/stable
 	url = https://github.com/xenit-eu/alfred-api.git
 	branch = release-2.x
+[submodule "repo/inflow/3.5"]
+	path = repo/inflow/3.5
+	url = git@bitbucket.org:xenit/inflow-docs.git
+	branch = release-3.5
