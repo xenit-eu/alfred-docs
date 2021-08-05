@@ -120,7 +120,6 @@ build_and_split_manual alfred-inflow 3.3-installation "installation-guide.md"
 build_and_split_manual alfred-inflow 3.1-user "user-guide.md"
 build_and_split_manual alfred-inflow 3.1-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 3.1-installation "installation-guide.md"
-build_and_split_manual alfred-inflow 3.0 "user-guide.md"
 build_product_website alfred-inflow
 
 # Api
