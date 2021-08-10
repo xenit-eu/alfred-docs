@@ -33,3 +33,7 @@
 	path = repo/inflow/3.5
 	url = git@bitbucket.org:xenit/inflow-docs.git
 	branch = release-3.5
+[submodule "repo/inflow/3.2"]
+	path = repo/inflow/3.2
+	url = git@bitbucket.org:xenit/inflow-docs.git
+	branch = release-3.2
