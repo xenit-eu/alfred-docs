@@ -64,7 +64,7 @@ build_product_website() {
     sync
 }
 
-# The Alfred API Javadoc is built by a git submodule of the 'alfred-api' repository
+# Both Alfred API Javadoc and Swagger doc are built by the git submodule of the 'alfred-api' repository
 build_alfredapi_javadoc() {
     local alfredapidir="repo/alfred-api/stable"
     pushd "$alfredapidir"
@@ -74,6 +74,15 @@ build_alfredapi_javadoc() {
     local outputdir="build/website/alfred-api/stable-user"
     mkdir -p "$outputdir"
     cp -a "$alfredapidir/apix-interface/build/docs/javadoc" $outputdir
+}
+
+build_alfredapi_swaggerdoc() {
+    local swaggeruidir="swagger-ui"
+    local outputdir="build/website/alfred-api/stable-user"
+    cp -a ${swaggeruidir} ${outputdir}
+
+    local alfredapidir="repo/alfred-api/stable"
+    ${alfredapidir}/gradlew --project-dir ${alfredapidir} --quiet :swagger-doc-extractor:run > "${outputdir}/${swaggeruidir}/swagger.json"
 }
 
 rm -rf build/
@@ -109,7 +118,6 @@ build_and_split_manual alfred-edge 1.1 "main.md"
 build_and_split_manual alfred-edge 1.0 "main.md"
 build_product_website alfred-edge
 
-
 # Inflow
 build_and_split_manual alfred-inflow 3.5-user "user-guide.md"
 build_and_split_manual alfred-inflow 3.5-developer "developer-guide.md"
@@ -126,6 +134,7 @@ build_product_website alfred-inflow
 build_and_split_manual alfred-api stable-user "user-guide.md"
 build_product_website alfred-api
 build_alfredapi_javadoc
+build_alfredapi_swaggerdoc
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
