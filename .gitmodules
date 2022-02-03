@@ -37,3 +37,7 @@
 	path = repo/inflow/3.2
 	url = git@bitbucket.org:xenit/inflow-docs.git
 	branch = release-3.2
+[submodule "repo/edge/2.1"]
+	path = repo/edge/2.1
+	url = git@bitbucket.org:xenit/edge-docs.git
+	branch = release-2.1
