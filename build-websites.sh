@@ -116,6 +116,7 @@ build_product_website alfred-finder
 # Edge
 build_and_split_manual alfred-edge 1.1 "main.md"
 build_and_split_manual alfred-edge 1.0 "main.md"
+build_and_split_manual alfred-edge 2.1 "main.md"
 build_product_website alfred-edge
 
 # Inflow
