@@ -1,24 +1,23 @@
-[submodule "repo/inflow/3.4"]
-	path = repo/inflow/3.4
-	url = git@bitbucket.org:xenit/inflow-docs.git
-	branch = release-3.4
-
 [submodule "repo/edge/1.0"]
 	path = repo/edge/1.0
-	url = git@bitbucket.org:xenit/edge-docs.git
+	url = https://github.com/xenit-eu/edge-docs.git
 	branch = release-1.0
 [submodule "repo/edge/1.1"]
 	path = repo/edge/1.1
-	url = git@bitbucket.org:xenit/edge-docs.git
+	url = https://github.com/xenit-eu/edge-docs.git
 	branch = release-1.1
+[submodule "repo/edge/2.1"]
+	path = repo/edge/2.1
+	url = https://github.com/xenit-eu/edge-docs.git
+	branch = release-2.1
 
 [submodule "repo/finder/2.1"]
 	path = repo/finder/2.1
-	url = git@bitbucket.org:xenit/finder-docs.git
+	url = https://github.com/xenit-eu/finder-docs.git
 	branch = release-2.1
 [submodule "repo/finder/2.2"]
 	path = repo/finder/2.2
-	url = git@bitbucket.org:xenit/finder-docs.git
+	url = https://github.com/xenit-eu/finder-docs.git
 	branch = release-2.2
 
 [submodule "repo/api/stable"]
@@ -29,15 +28,16 @@
 	path = repo/alfred-api/stable
 	url = https://github.com/xenit-eu/alfred-api.git
 	branch = release-2.x
+
 [submodule "repo/inflow/3.5"]
 	path = repo/inflow/3.5
-	url = git@bitbucket.org:xenit/inflow-docs.git
+	url = https://github.com/xenit-eu/inflow-docs.git
 	branch = release-3.5
+[submodule "repo/inflow/3.4"]
+	path = repo/inflow/3.4
+	url = https://github.com/xenit-eu/inflow-docs.git
+	branch = release-3.4
 [submodule "repo/inflow/3.2"]
 	path = repo/inflow/3.2
-	url = git@bitbucket.org:xenit/inflow-docs.git
+	url = https://github.com/xenit-eu/inflow-docs.git
 	branch = release-3.2
-[submodule "repo/edge/2.1"]
-	path = repo/edge/2.1
-	url = git@bitbucket.org:xenit/edge-docs.git
-	branch = release-2.1
