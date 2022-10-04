@@ -82,6 +82,8 @@ build_alfredapi_swaggerdoc() {
     cp -a ${swaggeruidir} ${outputdir}
 
     local alfredapidir="repo/alfred-api/stable"
+    sleep  5
+    ls -l ${alfredapidir}
     ${alfredapidir}/gradlew --project-dir ${alfredapidir} --quiet :swagger-doc-extractor:run > "${outputdir}/${swaggeruidir}/swagger.json"
 }
 

@@ -1,0 +1,45 @@
+name: 'Continuous Integration'
+on: [ push, workflow_dispatch ]
+jobs:
+  continuousIntegration:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+        with:
+          token: ${{secrets.ACCESS_TOKEN}}
+          submodules: recursive
+#      - uses: webfactory/ssh-agent@v0.5.4
+#        with:
+#          ssh-private-key: ${{ secrets.SSH_DEPLOYMENT_KEY }}
+      - name: init submodules
+        run: |
+          git submodule update --init --remote --recursive
+      - name: Set up JDK 1.11
+        uses: actions/setup-java@v1
+        with:
+          java-version: 1.11
+      - name: Login to Docker
+        env:
+          DOCKER_HUB_USER: ${{ secrets.XENIT_DOCKER_REGISTRY_USERNAME }}
+          DOCKER_HUB_PASSWORD: ${{ secrets.XENIT_DOCKER_REGISTRY_PASSWORD }}
+        run: |
+          echo "$DOCKER_HUB_PASSWORD" | docker login hub.xenit.eu --username "$DOCKER_HUB_USER" --password-stdin
+      - name: Write gradle properties
+        run: |
+          mkdir -p ~/.gradle 
+          echo 'buildDate='$(date +%s) >> ~/.gradle/gradle.properties
+          echo 'eu.xenit.artifactory.username='${{secrets.XENIT_ARTIFACTORY_USERNAME}} >> ~/.gradle/gradle.properties
+          echo 'eu.xenit.artifactory.password='${{secrets.XENIT_ARTIFACTORY_PASSWORD}} >> ~/.gradle/gradle.properties
+      - name: Build websites
+        run: |
+          [ -e "pandoc.deb" ] || curl -L https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb -o pandoc.deb
+          echo "84fe35ed9be0f1d8eb6d4cc03d63a8e532e9776f pandoc.deb" | sha1sum -c
+          dpkg -x pandoc.deb pandoc
+          PATH="$(pwd)/pandoc/usr/bin":"$PATH" bash -x ./build-websites.sh
+      - name: 'Upload Artifact'
+        if: success()
+        uses: actions/upload-artifact@v3
+        with:
+          name: website
+          path: /home/runner/work/alfred-docs/alfred-docs/**/build/website.tar.gz
+          retention-days: 2
