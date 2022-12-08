@@ -124,6 +124,9 @@ build_and_split_manual alfred-edge 2.1 "main.md"
 build_product_website alfred-edge
 
 # Inflow
+build_and_split_manual alfred-inflow 4.0-user "user-guide.md"
+build_and_split_manual alfred-inflow 4.0-developer "developer-guide.md"
+build_and_split_manual alfred-inflow 4.0-installation "installation-guide.md"
 build_and_split_manual alfred-inflow 3.5-user "user-guide.md"
 build_and_split_manual alfred-inflow 3.5-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 3.5-installation "installation-guide.md"
@@ -139,7 +142,7 @@ build_product_website alfred-inflow
 build_and_split_manual alfred-api stable-user "user-guide.md"
 build_product_website alfred-api
 build_alfredapi_javadoc
-build_alfredapi_swaggerdoc
+#build_alfredapi_swaggerdoc
 
 find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 \<\!-- alfred-docs@$(git describe --always --dirty) --\>"
