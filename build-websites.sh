@@ -90,6 +90,8 @@ build_alfredapi_swaggerdoc() {
 rm -rf build/
 
 # Desktop
+build_docx_manual alfred-desktop 4.2 "Alfred Desktop User Guide 4.2.docx"
+split_manual alfred-desktop 4.2
 build_docx_manual alfred-desktop 4.1 "Alfred Desktop User Guide 4.1.docx"
 split_manual alfred-desktop 4.1
 build_docx_manual alfred-desktop 4.0 "Alfred Desktop User Guide 4.0.docx"
