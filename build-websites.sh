@@ -113,6 +113,10 @@ split_manual alfred-desktop 3.2
 build_product_website alfred-desktop
 
 # Finder
+build_and_split_manual alfred-finder 2.4-user "user-guide.md"
+build_and_split_manual alfred-finder 2.4-admin "admin-guide.md"
+build_and_split_manual alfred-finder 2.3-user "user-guide.md"
+build_and_split_manual alfred-finder 2.3-admin "admin-guide.md"
 build_and_split_manual alfred-finder 2.2-user "user-guide.md"
 build_and_split_manual alfred-finder 2.2-admin "admin-guide.md"
 build_and_split_manual alfred-finder 2.1-user "user-guide.md"
