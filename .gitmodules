@@ -19,6 +19,15 @@
 	path = repo/finder/2.2
 	url = git@github.com:xenit-eu/finder-docs.git
 	branch = release-2.2
+[submodule "repo/finder/2.3"]
+	path = repo/finder/2.3
+	url = git@github.com:xenit-eu/finder-docs.git
+	branch = release-2.3
+[submodule "repo/finder/2.4"]
+	path = repo/finder/2.4
+	url = git@github.com:xenit-eu/finder-docs.git
+	branch = release-2.4
+
 
 [submodule "repo/api/stable"]
 	path = repo/alfred-api-docs/stable
@@ -45,11 +54,3 @@
 	path = repo/inflow/4.0
 	url = git@github.com:xenit-eu/inflow-docs.git
 	branch = release-4.0
-[submodule "repo/finder/2.3"]
-	path = repo/finder/2.3
-	url = git@github.com:xenit-eu/finder-docs.git
-	branch = release-2.3
-[submodule "repo/finder/2.4"]
-	path = repo/finder/2.4
-	url = git@github.com:xenit-eu/finder-docs.git
-	branch = release-2.4
