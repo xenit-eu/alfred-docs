@@ -1,0 +1,14 @@
+- Evaluator: string-compare
+  Forms:
+    - Fields:
+        - Id: cm:content
+          Text: Document
+          Fields:
+            - Id: cm:name
+            - Id: cm:author
+            - Id: cm:creator
+            - Id: cm:created
+            - Id: cm:modifier
+            - Id: cm:modified
+  Id: default-search-filters
+  Version: 1

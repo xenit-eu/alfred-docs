@@ -1,0 +1,30 @@
+- Id: column-list
+  Evaluator: string-compare
+  Version: 1
+  Forms:
+    - Fields:
+      - Id: demo_fields
+        Appearance: submenu
+        Text: Demo Fields
+        Fields:
+          - Appearance: section
+            Fields:
+              - Id: demo:department
+              - Id: demo:product_name
+              - Id: demo:customer_name
+          - Appearance: submenu
+            Text: Correspondence
+            Fields:
+              - Id: demo:corresp_date
+              - Id: demo:corresp_sender
+              - Id: demo:corresp_receiver
+              - Id: demo:corresp_subject
+              - Id: demo:corresp_reference
+          - Appearance: section
+            Fields:
+              - Id: demo:proposal_ref
+              - Id: demo:proposal_status
+          - Appearance: section
+            Fields:
+              - Id: demo:invoice_ref
+              - Id: demo:invoice_paid

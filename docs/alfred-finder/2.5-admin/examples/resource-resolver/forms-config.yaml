@@ -1,0 +1,10 @@
+- Id: xenit:exampleAspect
+  Evaluator: aspect
+  Forms:
+    - Fields:
+        - Id: dropdown-set
+          Fields:
+            - Id: xenit:exampleProperty
+              Template: gui.controlfactory.property.dropdown
+              Parameters:
+                resolver: repo.resources.guid

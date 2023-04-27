@@ -1,0 +1,13 @@
+- Id: search-filters
+  Evaluator: string-compare
+  Version: 1
+  Forms:
+  - Fields:
+    - Id: finder
+      Text: Finder
+      Fields:
+      - Id: finder:flatLabel
+      - Id: finder:constraintlist
+      - Id: finder:datetime
+      - Id: finder:bool
+      - Id: finder:currency

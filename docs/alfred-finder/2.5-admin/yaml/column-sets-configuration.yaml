@@ -1,0 +1,18 @@
+- Id: column-sets
+  Evaluator: string-compare
+  Version: 1
+  Fields:
+    - Id: AuditSet
+      Text: Who/When
+      Fields:
+        - Id: cm:author
+        - Id: cm:modified
+    - Id: ByAspectsSets
+      Fields:
+        - Id: AuditableAspect
+          Text: Auditable
+          Fields:
+            - Id: cm:creator
+            - Id: cm:created
+            - Id: cm:modifier
+            - Id: cm:modified
