@@ -1,9 +1,0 @@
-- Id: search-properties
-  Evaluator: string-compare
-  Version: 1
-  Forms:
-    - Fields:
-        - Id: All
-        - Id: FullText
-        - Id: cm:name
-        - Id: cm:categories

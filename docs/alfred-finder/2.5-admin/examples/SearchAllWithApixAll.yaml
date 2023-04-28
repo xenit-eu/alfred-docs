@@ -1,9 +1,0 @@
-- Evaluator: string-compare
-  Forms:
-    - Fields:
-        - Fields:
-            - Id: All
-              Parameters:
-                searchAllWithPropertyAll: true
-  Id: search-properties
-  Version: 1

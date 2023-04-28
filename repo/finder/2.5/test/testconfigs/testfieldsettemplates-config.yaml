@@ -1,0 +1,64 @@
+- Evaluator: string-compare
+  Forms:
+    - Fields:
+        - Id: default-fieldset
+          Fields: &fields
+            - Id: cm:name
+            - Id: cm:title
+            - Id: cm:description
+            - Id: cm:creator
+            - Id: cm:created
+            - Id: cm:modifier
+            - Id: cm:modified
+        - Id: centered
+          Template: gui.controlfactory.fieldset.centered
+          Fields: *fields
+        - Id: 1-column
+          Template: gui.controlfactory.fieldset.1-column
+          Fields: *fields
+        - Id: 2-column
+          Template: gui.controlfactory.fieldset.2-column
+          Fields: *fields
+        - Id: 3-column
+          Template: gui.controlfactory.fieldset.3-column
+          Fields: *fields
+        - Id: group-default
+          Title: Default group
+          Template: gui.controlfactory.fieldset.group
+          Fields: *fields
+        - Id: group-centered
+          Template: gui.controlfactory.fieldset.group
+          Fields: *fields
+          Parameters:
+            centered: true
+        - Id: group-collapsible
+          Template: gui.controlfactory.fieldset.group
+          Fields: *fields
+          Parameters:
+            collapsible: true
+        - Id: group-collapsible-start-collapsed
+          Template: gui.controlfactory.fieldset.group
+          Fields: *fields
+          Parameters:
+            collapsible: true
+            start-collapsed: true
+        - Id: group-start-collapsed
+          Template: gui.controlfactory.fieldset.group
+          Fields: *fields
+          Parameters:
+            start-collapsed: true
+  Id: default-node
+  Version: 1
+
+- Evaluator: aspect
+  Forms: []
+  Id: cm:titled
+  Version: 1
+- Evaluator: aspect
+  Forms: []
+  Id: cm:auditable
+  Version: 1
+- Evaluator: aspect
+  Forms: []
+  Id: cm:author
+  Version: 1

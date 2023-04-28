@@ -1,0 +1,24 @@
+- Evaluator: string-compare
+  Forms:
+    - Fields:
+        - Id: DEFAULT
+          Text: Default
+          Fields:
+            - Id: Location
+            - Id: cm:created
+            - Id: finder:constraintlist
+            - Id: finder:currency
+  Id: column-sets
+  Version: 1
+
+- Evaluator: string-compare
+  Forms:
+    - Fields:
+        - Id: finder:datetime
+        - Id: finder:constraintlist
+        - Id: finder:textbox
+          Parameters:
+            fixed: true
+        - Id: finder:currency
+  Id: column-list
+  Version: 1
