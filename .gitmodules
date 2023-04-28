@@ -30,7 +30,7 @@
 [submodule "repo/finder/2.5"]
 	path = repo/finder/2.5
 	url = git@github.com:xenit-eu/finder-docs.git
-	branch = XENFIN-1361
+	branch = release-2.5
 
 [submodule "repo/api/stable"]
 	path = repo/alfred-api-docs/stable
