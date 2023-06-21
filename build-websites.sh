@@ -132,6 +132,9 @@ build_and_split_manual alfred-edge 2.1 "main.md"
 build_product_website alfred-edge
 
 # Inflow
+build_and_split_manual alfred-inflow 4.1-user "user-guide.md"
+build_and_split_manual alfred-inflow 4.1-developer "developer-guide.md"
+build_and_split_manual alfred-inflow 4.1-installation "installation-guide.md"
 build_and_split_manual alfred-inflow 4.0-user "user-guide.md"
 build_and_split_manual alfred-inflow 4.0-developer "developer-guide.md"
 build_and_split_manual alfred-inflow 4.0-installation "installation-guide.md"

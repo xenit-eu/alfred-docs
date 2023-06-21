@@ -57,3 +57,7 @@
 	path = repo/inflow/4.0
 	url = git@github.com:xenit-eu/inflow-docs.git
 	branch = release-4.0
+[submodule "repo/inflow/4.1"]
+	path = repo/inflow/4.1
+	url = git@github.com:xenit-eu/inflow-docs.git
+	branch = release-4.1
