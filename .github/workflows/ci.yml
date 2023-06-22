@@ -3,6 +3,8 @@ on: [ push, workflow_dispatch ]
 env:
   GRADLE_OPTS: >-
     -Dorg.gradle.project.buildDate=$(date +%s)
+    :wq-Dorg.gradle.project.org.alfresco.maven.nexus.username=${{ secrets.ALFRESCO_NEXUS_USERNAME }}
+    -Dorg.gradle.project.org.alfresco.maven.nexus.password=${{ secrets.ALFRESCO_NEXUS_PASSWORD }}
     -Dorg.gradle.project.eu.xenit.cloudsmith.username=${{ secrets.CLOUDSMITH_USER }} 
     -Dorg.gradle.project.eu.xenit.cloudsmith.password=${{ secrets.CLOUDSMITH_APIKEY }}
 jobs:
