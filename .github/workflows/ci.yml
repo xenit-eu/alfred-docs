@@ -1,5 +1,10 @@
 name: 'Continuous Integration'
 on: [ push, workflow_dispatch ]
+env:
+  GRADLE_OPTS: >-
+    -Dorg.gradle.project.buildDate=$(date +%s)
+    -Dorg.gradle.project.eu.xenit.cloudsmith.username=${{ secrets.CLOUDSMITH_USER }} 
+    -Dorg.gradle.project.eu.xenit.cloudsmith.password=${{ secrets.CLOUDSMITH_APIKEY }}
 jobs:
   continuousIntegration:
     runs-on: ubuntu-latest
@@ -27,12 +32,6 @@ jobs:
           registry: hub.xenit.eu
           username: ${{ secrets.XENIT_DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.XENIT_DOCKER_REGISTRY_PASSWORD }}
-      - name: Write gradle properties
-        run: |
-          mkdir -p ~/.gradle 
-          echo 'buildDate='$(date +%s) >> ~/.gradle/gradle.properties
-          echo 'eu.xenit.artifactory.username='${{secrets.XENIT_ARTIFACTORY_USERNAME}} >> ~/.gradle/gradle.properties
-          echo 'eu.xenit.artifactory.password='${{secrets.XENIT_ARTIFACTORY_PASSWORD}} >> ~/.gradle/gradle.properties
       - name: Build websites
         run: |
           [ -e "pandoc.deb" ] || curl -L https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb -o pandoc.deb
