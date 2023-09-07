@@ -1,0 +1,5 @@
+title: Alfred Object Storage
+params:
+  metadata:
+    hugo-config:
+      product: object-storage

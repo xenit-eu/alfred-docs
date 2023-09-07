@@ -61,3 +61,8 @@
 	path = repo/inflow/4.1
 	url = git@github.com:xenit-eu/inflow-docs.git
 	branch = release-4.1
+
+[submodule "repo/object-storage/3.5"]
+	path = repo/object-storage/3.5
+	url = git@github.com:xenit-eu/object-storage-docs.git
+	branch = main

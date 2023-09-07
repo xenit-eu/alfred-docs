@@ -131,6 +131,10 @@ build_and_split_manual alfred-edge 1.0 "main.md"
 build_and_split_manual alfred-edge 2.1 "main.md"
 build_product_website alfred-edge
 
+# Object Storage
+build_and_split_manual alfred-object-storage 3.5 "main.md"
+build_product_website alfred-object-storage
+
 # Inflow
 build_and_split_manual alfred-inflow 4.1-user "user-guide.md"
 build_and_split_manual alfred-inflow 4.1-developer "developer-guide.md"
