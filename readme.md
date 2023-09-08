@@ -15,7 +15,7 @@ Since submodules can not be used to check out a part of a repository, we put sym
 the submodules in `docs/$productName/$productVersion`
 
 The `docs/$productName/_hugo` folder contains a configuration file that is used to override the default configuration
-of [xenit-markdowntowebsite](https://bitbucket.org/xenit/xenit-markdowntowebsite).
+of [xenit-markdowntowebsite](https://github.com/xenit-eu/xenit-markdowntowebsite).
 
 
 ## Building
