@@ -21,7 +21,7 @@ jobs:
             ${{ secrets.DEPLOY_KEY_EDGE_DOCS }}
             ${{ secrets.DEPLOY_KEY_FINDER_DOCS }}
             ${{ secrets.DEPLOY_KEY_INFLOW_DOCS }}
-            ${{ DEPLOY_KEY_OBJECT_STORAGE_DOCS_PUBLISHING }}
+            ${{ secrets.DEPLOY_KEY_OBJECT_STORAGE_DOCS_PUBLISHING }}
             ${{ secrets.DEPLOY_KEY_OBJECT_STORAGE_DOCS }}
       - name: init submodules
         run: |
