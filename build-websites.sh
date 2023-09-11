@@ -96,7 +96,7 @@ split_manual alfred-desktop 4.2
 #split_manual alfred-desktop 4.1
 #build_docx_manual alfred-desktop 4.0 "Alfred Desktop User Guide 4.0.docx"
 #split_manual alfred-desktop 4.0
-#build_product_website alfred-desktop
+build_product_website alfred-desktop
 
 #find build/website -type f -name '*.html' -print0 | xargs -0 sed -i "/^<\!DOCTYPE html>$/a\
 #\<\!-- alfred-docs@$(git describe --always --dirty) --\>"
