@@ -40,20 +40,22 @@ jobs:
           echo "84fe35ed9be0f1d8eb6d4cc03d63a8e532e9776f pandoc.deb" | sha1sum -c
           dpkg -x pandoc.deb pandoc
           PATH="$(pwd)/pandoc/usr/bin":"$PATH" bash -x ./build-websites.sh
-      - name: Run unit tests
+      - name: information
         run: |
           pwd
           ls -l
+          ls -l build/
+          ls -l build/docx/
       - name: Archive Alfred Desktop artifact
         uses: actions/upload-artifact@v3
         with:
           name: alfred-desktop
           path: /home/runner/work/alfred-docs/alfred-docs/build/docx/alfred-desktop/4.2/extracted.md
           retention-days: 1
-      - name: 'Upload Artifact'
-        if: success()
-        uses: actions/upload-artifact@v3
-        with:
-          name: website
-          path: /home/runner/work/alfred-docs/alfred-docs/**/build/website.tar.gz
-          retention-days: 2
+#      - name: 'Upload Artifact'
+#        if: success()
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: website
+#          path: /home/runner/work/alfred-docs/alfred-docs/**/build/website.tar.gz
+#          retention-days: 2
