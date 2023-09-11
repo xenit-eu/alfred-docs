@@ -48,11 +48,17 @@ jobs:
           ls -l build/docx/
           ls -l build/docx/alfred-desktop/
           ls -l build/docx/alfred-desktop/4.2/
+#      - name: Archive Alfred Desktop artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: alfred-desktop
+#          path: /home/runner/work/alfred-docs/alfred-docs/build/docx/alfred-desktop/4.2/*
+#          retention-days: 1
       - name: Archive Alfred Desktop artifact
         uses: actions/upload-artifact@v3
         with:
           name: alfred-desktop
-          path: /home/runner/work/alfred-docs/alfred-docs/build/docx/alfred-desktop/4.2/*
+          path: /home/runner/work/alfred-docs/alfred-docs/build/normalized/alfred-desktop/4.2.tar
           retention-days: 1
 #      - name: 'Upload Artifact'
 #        if: success()
