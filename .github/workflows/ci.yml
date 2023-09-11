@@ -40,12 +40,14 @@ jobs:
           echo "84fe35ed9be0f1d8eb6d4cc03d63a8e532e9776f pandoc.deb" | sha1sum -c
           dpkg -x pandoc.deb pandoc
           PATH="$(pwd)/pandoc/usr/bin":"$PATH" bash -x ./build-websites.sh
-      - name: information
+      - name: Information
         run: |
           pwd
           ls -l
           ls -l build/
           ls -l build/docx/
+          ls -l build/docx/alfred-desktop/
+          ls -l build/docx/alfred-desktop/4.2/
       - name: Archive Alfred Desktop artifact
         uses: actions/upload-artifact@v3
         with:
