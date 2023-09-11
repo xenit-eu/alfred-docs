@@ -52,7 +52,7 @@ jobs:
         uses: actions/upload-artifact@v3
         with:
           name: alfred-desktop
-          path: /home/runner/work/alfred-docs/alfred-docs/build/docx/alfred-desktop/4.2/extracted.md
+          path: /home/runner/work/alfred-docs/alfred-docs/build/docx/alfred-desktop/4.2/*
           retention-days: 1
 #      - name: 'Upload Artifact'
 #        if: success()
