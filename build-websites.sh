@@ -65,6 +65,7 @@ build_product_website() {
     local productName="$1"
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
+    docker pull hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION
     tar c --portability -C "build/product/$productName" . | docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | tar x -C "build/website/$productName"
     sync
 }
