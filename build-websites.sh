@@ -97,7 +97,7 @@ build_docx_manual alfred-desktop 3.8 "Alfred Desktop User Guide 3.8.docx"
 split_manual alfred-desktop 4.2
 split_manual alfred-desktop 4.1
 split_manual alfred-desktop 4.0
-#split_manual alfred-desktop 3.8
+split_manual alfred-desktop 3.8
 #build_docx_manual alfred-desktop 3.7 "Alfred Desktop User Guide 3.7.docx"
 #split_manual alfred-desktop 3.7
 #build_docx_manual alfred-desktop 3.6 "Alfred Desktop User Guide 3.6.docx"
@@ -110,7 +110,7 @@ split_manual alfred-desktop 4.0
 #split_manual alfred-desktop 3.3
 #build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx"
 #split_manual alfred-desktop 3.2
-build_product_website alfred-desktop
+#build_product_website alfred-desktop
 
 # Finder
 build_and_split_manual alfred-finder 2.5-user "user-guide.md"
