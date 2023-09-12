@@ -47,7 +47,8 @@ split_manual() {
     tar tf "build/normalized/$productName/$versionName.tar"
     sync
     docker pull hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION
-    timeout 5 cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    cat "build/normalized/$productName/$versionName.tar" | docker run --name splitter_$productName_$versionName -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    docker logs splitter_$productName_$versionName
     sync
 }
 
@@ -69,7 +70,8 @@ build_product_website() {
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
     docker pull hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION
-    timeout 10 tar c --portability -C "build/product/$productName" . | docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | tar x -C "build/website/$productName"
+    tar c --portability -C "build/product/$productName" . | docker run --name website_builder_$productName_$versionName -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | tar x -C "build/website/$productName"
+    docker logs website_builder_$productName_$versionName
     sync
 }
 
