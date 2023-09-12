@@ -70,9 +70,9 @@ jobs:
           ls -l build/product/
           ls -l build/product/alfred-desktop/
           ls -l build/product/alfred-desktop/4.2/
-      - name: Archive Alfred Desktop artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: alfred-desktop
-          path: /home/runner/work/alfred-docs/alfred-docs/build/product/alfred-desktop
-          retention-days: 1
+#      - name: Archive Alfred Desktop artifact
+#        uses: actions/upload-artifact@v3
+#        with:
+#          name: alfred-desktop
+#          path: /home/runner/work/alfred-docs/alfred-docs/build/product/alfred-desktop
+#          retention-days: 1
