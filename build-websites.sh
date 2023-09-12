@@ -58,9 +58,7 @@ build_product_website() {
     local productName="$1"
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
-    tar c --portability -C "build/product/$productName" . | \
-        docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
-        tar x -C "build/website/$productName"
+    tar c --portability -C "build/product/$productName" . | docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | tar x -C "build/website/$productName"
     sync
 }
 
@@ -110,7 +108,7 @@ split_manual alfred-desktop 3.8
 #split_manual alfred-desktop 3.3
 #build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx"
 #split_manual alfred-desktop 3.2
-#build_product_website alfred-desktop
+build_product_website alfred-desktop
 
 ## Finder
 #build_and_split_manual alfred-finder 2.5-user "user-guide.md"
