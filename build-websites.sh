@@ -46,13 +46,19 @@ split_manual() {
     tar tf "build/normalized/$productName/$versionName.tar"
     cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
     sync
+}
+
+extract_manual() {
+    local productName="$1"
+    local versionName="$2"
     tar xf "build/normalized/$productName/$versionName-out.tar" -C "build/product/$productName"
     sync
 }
 
-build_and_split_manual() {
+build_split_and_extract_manual() {
     build_manual "$@"
     split_manual "$1" "$2"
+    extract_manual "$1" "$2"
 }
 
 build_product_website() {
@@ -109,47 +115,57 @@ split_manual alfred-desktop 3.5
 split_manual alfred-desktop 3.4
 split_manual alfred-desktop 3.3
 split_manual alfred-desktop 3.2
+extract_manual alfred-desktop 4.2
+extract_manual alfred-desktop 4.1
+extract_manual alfred-desktop 4.0
+extract_manual alfred-desktop 3.8
+extract_manual alfred-desktop 3.7
+extract_manual alfred-desktop 3.6
+extract_manual alfred-desktop 3.5
+extract_manual alfred-desktop 3.4
+extract_manual alfred-desktop 3.3
+extract_manual alfred-desktop 3.2
 build_product_website alfred-desktop
 
 ## Finder
-#build_and_split_manual alfred-finder 2.5-user "user-guide.md"
-#build_and_split_manual alfred-finder 2.5-admin "admin-guide.md"
-#build_and_split_manual alfred-finder 2.4-user "user-guide.md"
-#build_and_split_manual alfred-finder 2.4-admin "admin-guide.md"
-#build_and_split_manual alfred-finder 2.3-user "user-guide.md"
-#build_and_split_manual alfred-finder 2.3-admin "admin-guide.md"
-#build_and_split_manual alfred-finder 2.2-user "user-guide.md"
-#build_and_split_manual alfred-finder 2.2-admin "admin-guide.md"
-#build_and_split_manual alfred-finder 2.1-user "user-guide.md"
-#build_and_split_manual alfred-finder 2.1-configuration "configuration-guide.md"
+#build_split_and_extract_manual alfred-finder 2.5-user "user-guide.md"
+#build_split_and_extract_manual alfred-finder 2.5-admin "admin-guide.md"
+#build_split_and_extract_manual alfred-finder 2.4-user "user-guide.md"
+#build_split_and_extract_manual alfred-finder 2.4-admin "admin-guide.md"
+#build_split_and_extract_manual alfred-finder 2.3-user "user-guide.md"
+#build_split_and_extract_manual alfred-finder 2.3-admin "admin-guide.md"
+#build_split_and_extract_manual alfred-finder 2.2-user "user-guide.md"
+#build_split_and_extract_manual alfred-finder 2.2-admin "admin-guide.md"
+#build_split_and_extract_manual alfred-finder 2.1-user "user-guide.md"
+#build_split_and_extract_manual alfred-finder 2.1-configuration "configuration-guide.md"
 #build_product_website alfred-finder
 #
 ## Edge
-#build_and_split_manual alfred-edge 1.1 "main.md"
-#build_and_split_manual alfred-edge 1.0 "main.md"
-#build_and_split_manual alfred-edge 2.1 "main.md"
+#build_split_and_extract_manual alfred-edge 1.1 "main.md"
+#build_split_and_extract_manual alfred-edge 1.0 "main.md"
+#build_split_and_extract_manual alfred-edge 2.1 "main.md"
 #build_product_website alfred-edge
 #
 ## Inflow
-#build_and_split_manual alfred-inflow 4.1-user "user-guide.md"
-#build_and_split_manual alfred-inflow 4.1-developer "developer-guide.md"
-#build_and_split_manual alfred-inflow 4.1-installation "installation-guide.md"
-#build_and_split_manual alfred-inflow 4.0-user "user-guide.md"
-#build_and_split_manual alfred-inflow 4.0-developer "developer-guide.md"
-#build_and_split_manual alfred-inflow 4.0-installation "installation-guide.md"
-#build_and_split_manual alfred-inflow 3.5-user "user-guide.md"
-#build_and_split_manual alfred-inflow 3.5-developer "developer-guide.md"
-#build_and_split_manual alfred-inflow 3.5-installation "installation-guide.md"
-#build_and_split_manual alfred-inflow 3.4-user "user-guide.md"
-#build_and_split_manual alfred-inflow 3.4-developer "developer-guide.md"
-#build_and_split_manual alfred-inflow 3.4-installation "installation-guide.md"
-#build_and_split_manual alfred-inflow 3.2-user "user-guide.md"
-#build_and_split_manual alfred-inflow 3.2-developer "developer-guide.md"
-#build_and_split_manual alfred-inflow 3.2-installation "installation-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.1-user "user-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.1-developer "developer-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.1-installation "installation-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.0-user "user-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.0-developer "developer-guide.md"
+#build_split_and_extract_manual alfred-inflow 4.0-installation "installation-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.5-user "user-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.5-developer "developer-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.5-installation "installation-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.4-user "user-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.4-developer "developer-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.4-installation "installation-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.2-user "user-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.2-developer "developer-guide.md"
+#build_split_and_extract_manual alfred-inflow 3.2-installation "installation-guide.md"
 #build_product_website alfred-inflow
 #
 ## Api
-#build_and_split_manual alfred-api stable-user "user-guide.md"
+#build_split_and_extract_manual alfred-api stable-user "user-guide.md"
 #build_product_website alfred-api
 #build_alfredapi_javadoc
 #build_alfredapi_swaggerdoc
