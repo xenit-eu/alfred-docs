@@ -48,7 +48,6 @@ split_manual() {
     sync
     docker pull hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION
     cat "build/normalized/$productName/$versionName.tar" | docker run --name splitter_$productName_$versionName -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
-    docker logs splitter_$productName_$versionName
     sync
 }
 
