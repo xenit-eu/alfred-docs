@@ -62,7 +62,13 @@ jobs:
           ls -l build/
           ls -l build/normalized/
           ls -l build/normalized/alfred-desktop/
-          ls -l build/normalized/alfred-desktop/4.2/
+      - name: Information normalized
+        run: |
+          pwd
+          ls -l
+          ls -l build/
+          ls -l build/product/
+          ls -l build/product/alfred-desktop/
 #      - name: Archive Alfred Desktop artifact
 #        uses: actions/upload-artifact@v3
 #        with:
