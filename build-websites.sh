@@ -3,7 +3,7 @@ set -e
 scriptPath="$( dirname "${BASH_SOURCE[0]}" )" # cd to the directory containg the script
 cd "$scriptPath"
 MARKDOWNTOPDF_VERSION=build-201911121900-1
-MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-202010231216-2
+MARKDOWNTOWEBSITE_VERSION=1.0.0-SNAPSHOT-202109032010-1
 
 WEIGHT=0
 
@@ -110,7 +110,7 @@ split_manual alfred-desktop 3.8
 #split_manual alfred-desktop 3.3
 #build_docx_manual alfred-desktop 3.2 "Fred User Guide Trial 3.2.docx"
 #split_manual alfred-desktop 3.2
-#build_product_website alfred-desktop
+build_product_website alfred-desktop
 
 # Finder
 build_and_split_manual alfred-finder 2.5-user "user-guide.md"
