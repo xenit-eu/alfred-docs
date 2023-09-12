@@ -32,6 +32,7 @@ build_docx_manual() {
     pandoc -t markdown-simple_tables --extract-media "assets" "$currentPath/docs/$productName/$versionName/$3" -o "extracted.md" 1>&2
     popd > /dev/null
     cat "docs/$productName/$versionName/metadata.yaml" "$buildDir/extracted.md"  > "$buildDir/normalized.md"
+    sync
     rm "$buildDir/extracted.md"
     mkdir -p "build/normalized/$productName"
     tar cf "build/normalized/$productName/$versionName.tar" --portability -C "$buildDir" .
@@ -44,7 +45,9 @@ split_manual() {
     WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
     tar tf "build/normalized/$productName/$versionName.tar"
-    timeout 2 cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    sync
+    docker pull hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION
+    timeout 5 cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
     sync
 }
 
