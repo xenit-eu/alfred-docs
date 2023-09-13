@@ -35,6 +35,9 @@ jobs:
           registry: hub.xenit.eu
           username: ${{ secrets.XENIT_DOCKER_REGISTRY_USERNAME }}
           password: ${{ secrets.XENIT_DOCKER_REGISTRY_PASSWORD }}
+      - name: Information docx
+        run: |
+          tar --version
       - name: Build websites
         run: |
           [ -e "pandoc.deb" ] || curl -L https://github.com/jgm/pandoc/releases/download/1.17.2/pandoc-1.17.2-1-amd64.deb -o pandoc.deb
