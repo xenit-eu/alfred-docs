@@ -44,7 +44,7 @@ split_manual() {
     WEIGHT=$[$WEIGHT + 1]
     mkdir -p "build/product/$productName"
     tar tf "build/normalized/$productName/$versionName.tar"
-    cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i hub.xenit.eu/private/xenit-manuals-markdown-splitter:$MARKDOWNTOWEBSITE_VERSION normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
+    cat "build/normalized/$productName/$versionName.tar" | docker run --rm -i private.docker.xenit.eu/customer/xenit/xenit-manuals-markdown-splitter:1.0.2 normalized.md "target-path=$versionName" "weight=$WEIGHT" > "build/normalized/$productName/$versionName-out.tar"
     sync
     tar xf "build/normalized/$productName/$versionName-out.tar" -C "build/product/$productName"
 }
@@ -59,7 +59,7 @@ build_product_website() {
     mkdir -p "build/website/$productName"
     cp -r "docs/$productName/_hugo" "build/product/$productName/_hugo"
     tar c --portability -C "build/product/$productName" . | \
-        docker run --rm -i hub.xenit.eu/private/xenit-manuals-hugo-generator:$MARKDOWNTOWEBSITE_VERSION | \
+        docker run --rm -i private.docker.xenit.eu/customer/xenit/xenit-manuals-hugo-generator:1.0.2 | \
         tar x -C "build/website/$productName"
     sync
 }
