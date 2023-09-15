@@ -28,7 +28,13 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.11
-      - name: Login to Docker
+      - name: Login to CloudSmith
+        uses: docker/login-action@v2
+        with:
+          registry: private.docker.xenit.eu
+          username: ${{ secrets.CLOUDSMITH_USER }}
+          password: ${{ secrets.CLOUDSMITH_APIKEY }}
+      - name: Login to hub.xenit.eu
         uses: docker/login-action@v2
         with:
           registry: hub.xenit.eu
