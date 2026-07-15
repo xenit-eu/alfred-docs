@@ -15,7 +15,16 @@ Since submodules can not be used to check out a part of a repository, we put sym
 the submodules in `docs/$productName/$productVersion`
 
 The `docs/$productName/_hugo` folder contains a configuration file that is used to override the default configuration
-of [xenit-markdowntowebsite](https://bitbucket.org/xenit/xenit-markdowntowebsite).
+of [xenit-markdowntowebsite](https://github.com/xenit-eu/xenit-markdowntowebsite).
+
+
+### Landing page (index)
+
+A directory for the index (landing page at docs.xenit.eu) is located in `docs/index-static`. This is intended to be
+temporary. The long-term plan is that this can also be nicely generated from an .md file, but for now we need a fix for
+the currently broken index. To deploy this, the directory structure needs to be copied over to the root of the web host.
+
+To deploy: https://xenitsupport.jira.com/wiki/spaces/ST/pages/652378153/A2Hosting+for+www.xenit.eu
 
 
 ## Building
