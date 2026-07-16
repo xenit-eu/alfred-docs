@@ -1,6 +1,0 @@
-title: Alfred Finder
-params:
-    metadata:
-        hugo-config:
-            product: finder
-            logo-link: "https://xenit.eu/searching-documents-alfresco-finder/"
